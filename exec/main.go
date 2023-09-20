@@ -1,7 +1,9 @@
-package main 
+package main
 
-import "sao"
+import s "sao"
 
 func main() {
-	sao.Create_Player()
+	var p1 s.Stat_character
+	_ = p1
+	s.Test()
 }

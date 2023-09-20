@@ -2,7 +2,7 @@ package sao
 
 import "fmt"
 
-type stat_character struct {
+type Stat_character struct {
 	Pseudo      string
 	Classe      string
 	level       int
@@ -14,9 +14,10 @@ type stat_character struct {
 	point_stat  int
 	inventory   map[string]int
 	equipement  map[string]string
+	monnaie     int
 }
 
-type weapon struct {
+type Weapon struct {
 	bow               string
 	spear             string
 	rapier            string
@@ -31,7 +32,7 @@ type weapon struct {
 	stat_leave        string
 }
 
-type armor struct {
+type Armor struct {
 	head_armor       string
 	chest_armor      string
 	leg_armor        string
@@ -49,7 +50,7 @@ var input_player string
 var input_epee int
 
 func Create_Player() {
-	var stat stat_character
+	var stat Stat_character
 	fmt.Println("Bonjour player et bienvenu sur SAO ! Comment vous appeler vous ? ")
 	fmt.Scanln(&input_player)
 	stat.Pseudo = input_player
@@ -58,8 +59,8 @@ func Create_Player() {
 	stat.Choose_Classe()
 }
 
-func (stat stat_character) Choose_Classe() {
-	var armor armor
+func (stat Stat_character) Choose_Classe() {
+	var armor Armor
 	fmt.Println("Vous avez les classes :", "\n", "1- archer : Peut utiliser l'arc ou l'arbalète comme arme, ne peut pas porte d'armure lourde.", "\n", "PV_max = 50", "\n", "AD = 15", "\n", "Esquive = 8", "\n")
 	fmt.Println("2- Lancier : Utilise la lance ou la halbarde comme arme, La lance permet de réduire l'armure en fonction de la stat Perfo_armor.", "\n", "PV_max = 80", "\n", "AD = 13", "\n", "Esquive = 4", "\n")
 	fmt.Println("3- épéiste : Peut utiliser comme arme la rapière, le katana, l'épée à une main et l'épée à deux main.", "\n", "PV_max = 100", "\n", "AD = 10", "\n", "Esquive = 6", "\n")
@@ -120,6 +121,7 @@ func (stat stat_character) Choose_Classe() {
 		stat.Choose_Classe()
 	}
 	stat.xp = 0
+	stat.monnaie = 0
 	armor.head_armor = "casque de départ"
 	armor.chest_armor = "buste de départ"
 	armor.leg_armor = "pantalon de départ"
@@ -130,7 +132,7 @@ func (stat stat_character) Choose_Classe() {
 	armor.durability_foot = 50
 }
 
-func (stat stat_character) Fiche_perso() {
+func (stat Stat_character) Fiche_perso() {
 	fmt.Println("Name : ", stat.Pseudo, "                   ", "classe : ", stat.Classe, "        ", stat.equipement["tete"])
 	fmt.Println("level : ", stat.level, "                        xp :", stat.xp, "                  ", stat.equipement["buste"])
 	fmt.Println("                                                            ", stat.equipement["jambe"])
@@ -145,11 +147,12 @@ func (stat stat_character) Fiche_perso() {
 	fmt.Println(" ")
 	fmt.Println("___________________________INVENTORY___________________________")
 	fmt.Println(stat.inventory)
+	fmt.Println("gold : ", stat.monnaie)
 }
 
-func (stat stat_character) Equipement() {
-	var armor armor
-	var weapon weapon
+func (stat Stat_character) Equipement() {
+	var armor Armor
+	var weapon Weapon
 	var input_axe int
 	if input_classe == 1 {
 		weapon.bow = "arc de départ"
