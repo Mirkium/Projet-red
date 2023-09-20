@@ -16,18 +16,32 @@ type stat_character struct {
 	equipement  map[string]string
 }
 
+type weapon struct {
+	bow               string
+	spear             string
+	rapier            string
+	katana            string
+	sword             string
+	longsword         string
+	knife             string
+	axe               string
+	mace              string
+	durability_weapon int
+	stat_bonus        string
+	stat_leave        string
+}
+
 type armor struct {
-	heat_armor       string
-	buste_armor      string
+	head_armor       string
+	chest_armor      string
 	leg_armor        string
 	foot_armor       string
 	durability_heat  int
-	durability_buste int
+	durability_chest int
 	durability_leg   int
 	durability_foot  int
 	stat_bonus       string
 	stat_leave       string
-	item_armor       map[string]int
 }
 
 var input_classe int
@@ -106,12 +120,12 @@ func (stat stat_character) Choose_Classe() {
 		stat.Choose_Classe()
 	}
 	stat.xp = 0
-	armor.heat_armor = "casque de départ"
-	armor.buste_armor = "buste de départ"
+	armor.head_armor = "casque de départ"
+	armor.chest_armor = "buste de départ"
 	armor.leg_armor = "pantalon de départ"
 	armor.foot_armor = "botte de départ"
 	armor.durability_heat = 40
-	armor.durability_buste = 70
+	armor.durability_chest = 70
 	armor.durability_leg = 60
 	armor.durability_foot = 50
 }
@@ -134,29 +148,66 @@ func (stat stat_character) Fiche_perso() {
 }
 
 func (stat stat_character) Equipement() {
+	var armor armor
+	var weapon weapon
+	var input_axe int
 	if input_classe == 1 {
-		stat.equipement = map[string]string{"tete": " ", "buste": "plastron de départ", "jambe": "pantalon de départ", "botte": "botte de départ", "main droite": "arc de départ", "main gauche": "X"}
+		weapon.bow = "arc de départ"
+		stat.equipement = map[string]string{"tete": armor.head_armor, "buste": armor.chest_armor, "jambe": armor.leg_armor, "botte": armor.foot_armor, "main droite": " ", "main gauche": weapon.bow}
 		stat.Fiche_perso()
 	}
 	if input_classe == 2 {
-		stat.equipement = map[string]string{"tete": " ", "buste": "plastron de départ", "jambe": "pantalon de départ", "botte": "botte de départ", "main droite": "lance de départ", "main gauche": "X"}
+		weapon.spear = "lance de départ"
+		stat.equipement = map[string]string{"tete": armor.head_armor, "buste": armor.chest_armor, "jambe": armor.leg_armor, "botte": armor.foot_armor, "main droite": weapon.spear, "main gauche": "X"}
 		stat.Fiche_perso()
 	}
 	if input_classe == 3 {
 		fmt.Println("Pour choisir votre voix de l'épée entrée : 1 pour la rapière, 2 pour le katana, 3pour l'épée à une main et 4 pour l'épée à deux main")
 		fmt.Scanln(&input_epee)
+
 		if input_epee == 1 {
-			stat.equipement = map[string]string{"tete": " ", "buste": "plastron de départ", "jambe": "pantalon de départ", "botte": "botte de départ", "main droite": "rapière de départ", "main gauche": " "}
+			weapon.rapier = "rapier de départ"
+			stat.equipement = map[string]string{"tete": armor.head_armor, "buste": armor.chest_armor, "jambe": armor.leg_armor, "botte": armor.foot_armor, "main droite": weapon.rapier, "main gauche": " "}
+			stat.Fiche_perso()
 		}
 		if input_epee == 2 {
-			stat.equipement = map[string]string{"tete": " ", "buste": "plastron de départ", "jambe": "pantalon de départ", "botte": "botte de départ", "main droite": "katana en bois", "main gauche": " "}
+			weapon.katana = "katana de départ"
+			stat.equipement = map[string]string{"tete": armor.head_armor, "buste": armor.chest_armor, "jambe": armor.leg_armor, "botte": armor.foot_armor, "main droite": weapon.katana, "main gauche": " "}
+			stat.Fiche_perso()
 		}
 		if input_epee == 3 {
-			stat.equipement = map[string]string{"tete": " ", "buste": "plastron de départ", "jambe": "pantalon de départ", "botte": "botte de départ", "main droite": "épée à une main en bois", "main gauche": " "}
+			weapon.sword = "épée à une main de départ"
+			stat.equipement = map[string]string{"tete": armor.head_armor, "buste": armor.chest_armor, "jambe": armor.leg_armor, "botte": armor.foot_armor, "main droite": weapon.sword, "main gauche": " "}
+			stat.Fiche_perso()
 		}
 		if input_epee == 4 {
-			stat.equipement = map[string]string{"tete": " ", "buste": "plastron de départ", "jambe": "pantalon de départ", "botte": "botte de départ", "main droite": "épée à deux main en bois", "main gauche": "X"}
+			weapon.longsword = "épée à deux main de départ"
+			stat.equipement = map[string]string{"tete": armor.head_armor, "buste": armor.chest_armor, "jambe": armor.leg_armor, "botte": armor.foot_armor, "main droite": weapon.longsword, "main gauche": "X"}
+			stat.Fiche_perso()
 		}
-
+	}
+	if input_classe == 4 {
+		fmt.Println("Pour chosir votre voix du maniement de la hache, entrer 1 pour la hache lourde et 2 pour la hache rapide : ")
+		fmt.Scanln(&input_axe)
+		if input_axe == 1 {
+			weapon.axe = "hache lourde de départ"
+			stat.equipement = map[string]string{"tete": armor.head_armor, "buste": armor.chest_armor, "jambe": armor.leg_armor, "botte": armor.foot_armor, "main droite": weapon.axe, "main gauche": " "}
+			stat.Fiche_perso()
+		}
+		if input_axe == 2 {
+			weapon.axe = "hache rapide de départ"
+			stat.equipement = map[string]string{"tete": armor.head_armor, "buste": armor.chest_armor, "jambe": armor.leg_armor, "botte": armor.foot_armor, "main droite": weapon.axe, "main gauche": weapon.axe}
+			stat.Fiche_perso()
+		}
+	}
+	if input_classe == 5 {
+		weapon.knife = "dague de départ"
+		stat.equipement = map[string]string{"tete": armor.head_armor, "buste": armor.chest_armor, "jambe": armor.leg_armor, "botte": armor.foot_armor, "main droite": weapon.knife, "main gauche": " "}
+		stat.Fiche_perso()
+	}
+	if input_classe == 6 {
+		weapon.mace = "masse de départ"
+		stat.equipement = map[string]string{"tete": armor.head_armor, "buste": armor.chest_armor, "jambe": armor.leg_armor, "botte": armor.foot_armor, "main droite": weapon.mace, "main gauche": " "}
+		stat.Fiche_perso()
 	}
 }
