@@ -1,4 +1,5 @@
-initMob()
+package mob
+
 
 type mob1 struct {
 	nom                string
