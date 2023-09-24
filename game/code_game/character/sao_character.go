@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"time"
 )
 
 type Stat_character struct {
@@ -68,13 +69,26 @@ func Create_Player() {
 // =============================================================================================================================================
 func (stat Stat_character) Choose_Classe() {
 	var armor Armor
-	fmt.Println("Vous avez les classes :", "\n", "1- archer : Peut utiliser l'arc ou l'arbalète comme arme, ne peut pas porte d'armure lourde.", "\n", "PV_max = 50", "\n", "AD = 15", "\n", "Esquive = 8", "\n")
-	fmt.Println("2- Lancier : Utilise la lance ou la halbarde comme arme, La lance permet de réduire l'armure en fonction de la stat Perfo_armor.", "\n", "PV_max = 80", "\n", "AD = 13", "\n", "Esquive = 4", "\n")
-	fmt.Println("3- épéiste : Peut utiliser comme arme la rapière, le katana, l'épée à une main et l'épée à deux main.", "\n", "PV_max = 100", "\n", "AD = 10", "\n", "Esquive = 6", "\n")
-	fmt.Println("4- hacheur : L'arme utilisée est la hache rapide ou hache lourde.", "\n", "PV_max = 120", "\n", "AD = 11", "\n", "Esquive = 3", "\n")
-	fmt.Println("5- Joueur de couteau : Utilisateur des dagues et couteau qui peut avoir des propriétées de saignement.", "\n", "Pv_max = 50", "\n", "AD = 14", "\n", "Esquive = 8", "\n")
-	fmt.Println("6- masseur : Utilise et manie les masses et marteaux d'armes pouvant étourdir les ennemies.", "\n", "PV_max = 130", "\n", "AD = 9", "\n", "Esquive = 1", "\n")
-	fmt.Println("Pour choisir une classe entrer le numéro de la classe : ")
+	fmt.Println("Vous avez les classes :", "\n")
+	fmt.Println("   O    |----------------------------------------------------------------------------------------------------------------------------------|    O")
+	fmt.Println("   ▒    | 1- archer : Peut utiliser l'arc ou l'arbalète comme arme, ne peut pas porte d'armure lourde.                                     |    ▒")
+	fmt.Println("   ▒    | statistique de base :   PV_max = 50   //   AD = 15   //   Esquive = 8                                                            |    ▒")
+	fmt.Println("o==▓==o |----------------------------------------------------------------------------------------------------------------------------------| o==▓==o")
+	fmt.Println("   █    | 2- Lancier : Utilise la lance ou la halbarde comme arme, La lance permet de réduire l'armure en fonction de la stat Perfo_armor. |    █")
+	fmt.Println("   █    | statistique de base :   PV_max = 80   //   AD = 13   //   Esquive = 4                                                            |    █")
+	fmt.Println("   █    |----------------------------------------------------------------------------------------------------------------------------------|    █")
+	fmt.Println("   █    | 3- épéiste : Peut utiliser comme arme la rapière, le katana, l'épée à une main et l'épée à deux main.                            |    █")
+	fmt.Println("   ▼    | statistique de base :   PV_max = 100   //   AD = 10   //   Esquive = 6                                                           |    ▼")
+	fmt.Println("  ynov  |----------------------------------------------------------------------------------------------------------------------------------|   ynov")
+	fmt.Println("   ▲    | 4- hacheur : L'arme utilisée est la hache rapide ou hache lourde.                                                                |    ▲")
+	fmt.Println("   █    | statistique de base :   PV_max = 120   //   AD = 11   //   Esquive = 3                                                           |    █")
+	fmt.Println("   █    |----------------------------------------------------------------------------------------------------------------------------------|    █")
+	fmt.Println("   █    | 5- Joueur de couteau : Utilisateur des dagues et couteau qui peut avoir des propriétées de saignement.                           |    █")
+	fmt.Println("   █    | statistique de base :   Pv_max = 50   //   AD = 14   //   Esquive = 8                                                            |    █")
+	fmt.Println("o==▓==o |----------------------------------------------------------------------------------------------------------------------------------| o==▓==o")
+	fmt.Println("   ▒    | 6- masseur : Utilise et manie les masses et marteaux d'armes pouvant étourdir les ennemies.                                      |    ▒")
+	fmt.Println("   ▒    | statistique de base :   PV_max = 130   //   AD = 9   //   Esquive = 1                                                            |    ▒")
+	fmt.Println("   O    |----------------------------------------------------------------------------------------------------------------------------------|    O")
 	fmt.Scanln(&input_classe)
 	Clear()
 	if input_classe == 1 {
@@ -202,6 +216,8 @@ func (stat Stat_character) Fiche_perso() {
 	fmt.Println("________________________________________________INVENTORY________________________________________________")
 	fmt.Println(stat.inventory)
 	fmt.Println("gold : ", stat.monnaie)
+	time.Sleep(3 * time.Second)
+	stat.Quete()
 }
 
 // =============================================================================================================================================
@@ -239,27 +255,47 @@ func (stat Stat_character) Equipement() {
 
 // =============================================================================================================================================
 func (stat *Stat_character) Voix_Epee() {
-	fmt.Println("Pour choisir votre voix de l'épée entrée : 1 pour la rapière, 2 pour le katana, 3pour l'épée à une main et 4 pour l'épée à deux main")
+	fmt.Println("o∷∷{=============▻ Choisiser votre voix de l'épée <ΞΞΞΞΞΞΞΞΞ{o}≠≠≠O: , ,  et ")
+	fmt.Println("           ⸸-----------------------Cyril------------------⸸")
+	fmt.Println("           |               1 : la rapière                 |")
+	fmt.Println("           ⸸----------------------Data-IA-----------------⸸")
+	fmt.Println("  ")
+	fmt.Println("           🗡----------------------Ethan------------------🗡")
+	fmt.Println("           |               2 : le katana                  |")
+	fmt.Println("           🗡--------------------Game-Prod----------------🗡")
+	fmt.Println("   ")
+	fmt.Println("           ⚔️---------------------Kheir------------------⚔️")
+	fmt.Println("           |               3 : l'épée à une main          |")
+	fmt.Println("           ⚔️--------------------Data-IA-----------------⚔️")
+	fmt.Println("  ")
+	fmt.Println("           🗡️--------------------Allan-------------------🗡️")
+	fmt.Println("           |               4 : l'épée à deux main         |")
+	fmt.Println("           🗡️---------------------Web--------------------🗡️")
 	fmt.Scanln(&input_epee)
 	var weapon Weapon
 	if input_epee == 1 {
 		weapon.rapier = "rapier de départ"
 		stat.equipement = map[string]string{"tete": "casque de départ", "buste": "plastron de départ", "jambe": "pantalon de départ", "botte": "botte de départ", "main droite": weapon.rapier, "main gauche": " "}
+		Clear()
 		stat.Fiche_perso()
 	} else if input_epee == 2 {
 		weapon.katana = "katana de départ"
 		stat.equipement = map[string]string{"tete": "casque de départ", "buste": "plastron de départ", "jambe": "pantalon de départ", "botte": "botte de départ", "main droite": weapon.katana, "main gauche": " "}
+		Clear()
 		stat.Fiche_perso()
 	} else if input_epee == 3 {
 		weapon.sword = "épée à une main de départ"
 		stat.equipement = map[string]string{"tete": "casque de départ", "buste": "plastron de départ", "jambe": "pantalon de départ", "botte": "botte de départ", "main droite": weapon.sword, "main gauche": " "}
+		Clear()
 		stat.Fiche_perso()
 	} else if input_epee == 4 {
 		weapon.longsword = "épée à deux main de départ"
 		stat.equipement = map[string]string{"tete": "casque de départ", "buste": "plastron de départ", "jambe": "pantalon de départ", "botte": "botte de départ", "main droite": weapon.longsword, "main gauche": "X"}
+		Clear()
 		stat.Fiche_perso()
 	} else {
 		fmt.Println("Rentrer l'un des numéros corespondant à une voix de l'épée")
+		Clear()
 		stat.Voix_Epee()
 	}
 }
@@ -279,6 +315,34 @@ func (stat *Stat_character) Voix_hache() {
 	} else {
 		fmt.Println("ERREUR")
 		stat.Voix_hache()
+	}
+}
+
+// =============================================================================================================================================================
+func (stat Stat_character) Quete() {
+	var string_quest int
+	Clear()
+	fmt.Println("Maintenant aventurier ", stat.Pseudo, " veuilliez choisir une Quête, si vous voulez partir sans prendre de quête dite 0. ", "\n")
+	fmt.Println("[]====================tableau=des=quêtes====================[]")
+	fmt.Println("∐               1 -Donjons de l'arche perdu- (D)            ∐")
+	fmt.Println("∐                      INDISPONIBLE                         ∐")
+	fmt.Println("∐                      INDISPONIBLE                         ∐")
+	fmt.Println("∐                      INDISPONIBLE                         ∐")
+	fmt.Println("∐                      INDISPONIBLE                         ∐")
+	fmt.Println("∐                      INDISPONIBLE                         ∐")
+	fmt.Println("[]==========================================================[]", "\n")
+	fmt.Scanln(&string_quest)
+	if string_quest == 1 {
+		fmt.Println("Bonne chance pour votre quête !")
+		fmt.Println("Mais je vous conseille de vous entrainer sur le terrain d'entrainement au combat avant.")
+		fmt.Println("Vous pouvez aussi visiter la ville si vous le voulez aussi. ")
+		Clear()
+		fmt.Println("Sur ce bonne chance pour la conquête de 'Sword Art Online' !")
+	} else if string_quest == 0 {
+		fmt.Println("Aurevoir et penser à venir ici pour des quêtes de grandes envergure !")
+	} else {
+		fmt.Println("Faite un choix sinon l'admin sera pas contente !")
+		stat.Quete()
 	}
 }
 

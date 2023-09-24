@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func Menu() {
+func Menu() {	
 	fmt.Println("▓                                                                                  ▓")
 	fmt.Println("▓                                                                                  ▓")
 	fmt.Println("▓                                                                                  ▓")
