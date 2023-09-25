@@ -1,6 +1,5 @@
 package mob
 
-
 type mob1 struct {
 	nom                string
 	classe             string
@@ -8,6 +7,7 @@ type mob1 struct {
 	pointsDeVieMax     int
 	pointsDeVieActuels int
 	inventaire         map[string]int
+	degats             int
 }
 
 func initMob1() {
@@ -18,6 +18,7 @@ func initMob1() {
 	mob1.pointsDeVieMax = 50
 	mob1.pointsDeVieActuels = 50
 	mob1.inventaire = map[string]int{"épée fragile": 1, "casque": 1}
+	mob1.degats = 10
 }
 
 type mob2 struct {
@@ -27,6 +28,7 @@ type mob2 struct {
 	pointsDeVieMax     int
 	pointsDeVieActuels int
 	inventaire         map[string]int
+	degats             int
 }
 
 func initMob8() {
@@ -37,6 +39,7 @@ func initMob8() {
 	mob2.pointsDeVieMax = 75
 	mob2.pointsDeVieActuels = 75
 	mob2.inventaire = map[string]int{"épée en pierre": 1, "casque": 1, "bouclier": 1}
+	mob2.degats = 20
 }
 
 type mob3 struct {
@@ -46,6 +49,7 @@ type mob3 struct {
 	pointsDeVieMax     int
 	pointsDeVieActuels int
 	inventaire         map[string]int
+	degats             int
 }
 
 func initMob3() {
@@ -56,6 +60,7 @@ func initMob3() {
 	mob3.pointsDeVieMax = 100
 	mob3.pointsDeVieActuels = 100
 	mob3.inventaire = map[string]int{"Lance": 1, "casque": 1, "bouclier": 1}
+	mob3.degats = 30
 }
 
 type mob4 struct {
@@ -65,6 +70,7 @@ type mob4 struct {
 	pointsDeVieMax     int
 	pointsDeVieActuels int
 	inventaire         map[string]int
+	degats             int
 }
 
 func initMob14() {
@@ -75,6 +81,7 @@ func initMob14() {
 	mob4.pointsDeVieMax = 125
 	mob4.pointsDeVieActuels = 125
 	mob4.inventaire = map[string]int{"épée en fer": 1, "casque": 1, "bouclier": 1}
+	mob4.degats = 40
 }
 
 type mob5 struct {
@@ -84,6 +91,7 @@ type mob5 struct {
 	pointsDeVieMax     int
 	pointsDeVieActuels int
 	inventaire         map[string]int
+	degats             int	
 }
 
 func initMob5() {
@@ -94,4 +102,5 @@ func initMob5() {
 	mob5.pointsDeVieMax = 150
 	mob5.pointsDeVieActuels = 150
 	mob5.inventaire = map[string]int{"épée en obsidienne": 2, "Armure complète": 1, "potion": 1}
+	mob5.degats = 50
 }
